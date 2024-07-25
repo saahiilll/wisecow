@@ -43,14 +43,14 @@ jobs:
       with:
         source: "*.yml"
         target: ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/${{ secrets.VPS_USER }}/
-        password: ${{ secrets.VPS_PASSWORD }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Deploy to Kubernetes on VPS
       uses: appleboy/ssh-action@v0.1.3
       with:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USER }}
-        password: ${{ secrets.VPS_PASSWORD }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           kubectl apply -f /home/${{ secrets.VPS_USER }}/deployment.yml
           kubectl apply -f /home/${{ secrets.VPS_USER }}/service.yml
