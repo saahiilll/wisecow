@@ -42,7 +42,7 @@ jobs:
       uses: appleboy/scp-action@v0.1.3
       with:
         source: "*.yml"
-        target: ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/${{ secrets.VPS_USER }}/
+        target: ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/sahil/
         password: ${{ secrets.VPS_PASSWORD }}
         port: 22
 
@@ -54,5 +54,5 @@ jobs:
         password: ${{ secrets.VPS_PASSWORD }}
         port: 22
         script: |
-          kubectl apply -f /home/${{ secrets.VPS_USER }}/deployment.yml
-          kubectl apply -f /home/${{ secrets.VPS_USER }}/service.yml
+          kubectl apply -f /home/sahil/deployment.yml
+          kubectl apply -f /home/sahil/service.yml
