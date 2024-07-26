@@ -12,13 +12,13 @@ This repository provides instructions for deploying the Wisecow application on a
 - Registered DNS
 
 ## Access The Application
-- ### After Deploying The Application On Kubernetes Cluster It will Access Through-
-#### Access The Application Within Minikube
+### After Deploying The Application On Kubernetes Cluster It will Access Through-
+- #### Access The Application Within Minikube
 ***curl http:///localhost:30001***
-#### Forwarded the Minikube service to host machine By Following Command:
+- #### Forwarded the Minikube service to host machine By Following Command:
 ***nohup kubectl port-forward svc/wisecow-service 30001:100 &***
-#### After Forwarding The Service To The Host Machine Will Able To access The Application From Host Machine Through-
-***curl http://localhost:30001
+- #### After Forwarding The Service To The Host Machine Will Able To access The Application From Host Machine Through-
+***curl http://localhost:30001***
 
 ### Nginx Configuration for SSL
 *** Fist We Need To Install Nginx Web Server.
