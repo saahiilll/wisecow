@@ -8,7 +8,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
     
-# create softlink of packages to the bin directory
+# created softlink of packages to the bin directory
 RUN ln -s /usr/games/cowsay /usr/local/bin/cowsay
 RUN ln -s /usr/games/fortune /usr/local/bin/fortune
 
