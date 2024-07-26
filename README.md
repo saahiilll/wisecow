@@ -12,7 +12,7 @@ This repository provides instructions for deploying the Wisecow application on a
 - Registered DNS
 
 ## Access The Application
-### After Deploying The Application On Kubernetes Cluster It will Access Through-
+- ### After Deploying The Application On Kubernetes Cluster It will Access Through-
 #### Access The Application Within Minikube
 ***curl http:///localhost:30001***
 #### Forwarded the Minikube service to host machine By Following Command:
