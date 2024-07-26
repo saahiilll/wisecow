@@ -26,6 +26,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - run: ls -la # Verify the files are present
       - uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -33,5 +34,6 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           port: 22
           script: |
-            sshpass -p "${{ secrets.VPS_PASSWORD }}" scp -o StrictHostKeyChecking=no -r "*.yml" ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/sahil/
-            sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "kubectl apply -f /home/sahil/deployment.yml && kubectl apply -f /home/sahil/service.yml"
+            scp -o StrictHostKeyChecking=no -r deployment.yml service.yml ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/sahil/
+            ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "ls -la /home/sahil/" # Verify the files exist on remote
+            ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "kubectl apply -f /home/sahil/deployment.yml && kubectl apply -f /home/sahil/service.yml"
