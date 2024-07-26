@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: wisecow-service
   annotations:
-    description: "This is the wisecow-service for the assessment of (Accukno)"
+    description: "This is the wisecow-service for the assessment of (Accuknox)"
   labels:
     app: wisecow
 spec:
