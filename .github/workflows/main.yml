@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: Wisecow CI/CD Pipeline
 
 on:
   push:
@@ -37,7 +37,7 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
-          port: 22
+          port: ${{ secrets.PORT }}
           script: |
             ls -la /home/sahil/accuknox 
             kubectl apply -f /home/sahil/accuknox/deployment.yml && kubectl apply -f /home/sahil/accuknox/service.yml
