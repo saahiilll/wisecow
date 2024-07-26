@@ -1,0 +1,24 @@
+name: Deploy to Linux Server
+
+on:
+  push:
+    branches:
+      - master  # Change to the branch you want to trigger the deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Copy files to server
+        uses: appleboy/scp-action@v0.1.8
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_PASSWORD }}
+          port: ${{ secrets.PORT }}
+          source: 'deployment.yml,service.yml'
+          target: '/home/sahil/'
