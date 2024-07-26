@@ -30,10 +30,11 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.VPS_PASSWORD }}
           port: 22
           script: |
-            sudo apt-get update && sudo apt-get install -y openssh-client
-            scp -r "*.yml" ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/sahil/
-            kubectl apply -f /home/sahil/deployment.yml
-            kubectl apply -f /home/sahil/service.yml
+            sudo -S apt-get update && sudo -S apt-get install -y openssh-client <<EOF
+            ${secrets.SUDO_PASSWORD}
+            EOF
+            sshpass -p "${{ secrets.VPS_PASSWORD }}" scp -o StrictHostKeyChecking=no -r "*.yml" ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/sahil/
+            sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "kubectl apply -f /home/sahil/deployment.yml && kubectl apply -f /home/sahil/service.yml"
