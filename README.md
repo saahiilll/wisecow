@@ -5,11 +5,11 @@
 This repository provides instructions for deploying the Wisecow application on a Minikube cluster and configuring it with secure HTTPS access using Nginx as a forward proxy with SSL.
 
 ## Prerequisites
-**Minikube Cluster**
-**kubectl Tool**
-**Nginx Web Server**
-**SSL Certificate***
-**Registered DNS***
+**Minikube Cluster
+**kubectl Tool
+**Nginx Web Server
+**SSL Certificate
+**Registered DNS
 
 ## Access The Application
 ### After Deploying The Application On Kubernetes Cluster It will Access Through-
