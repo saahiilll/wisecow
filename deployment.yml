@@ -2,9 +2,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wisecow-application
+  name: wisecow-app
   annotations:
-    description: "This is the wisecow application"
+    description: "This is the wisecow application hosted on minikube cluster (Accuknox Assessment)"
     kubernetes.io/change-cause: "This is version 1"
   labels:
     app: wisecow
@@ -15,9 +15,9 @@ spec:
       app: wisecow
   template:
     metadata:
-      name: testpod
+      name: wisecow-pod
       annotations:
-        description: "This is testing pod"
+        description: "This is production pod for wisecow application (Accuknox)"
       labels:
         app: wisecow
     spec:
