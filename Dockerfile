@@ -2,6 +2,7 @@ FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+# install dependencies
 RUN apt-get update && \
     apt-get install -y cowsay fortune-mod netcat-openbsd && \
     apt-get clean && \
