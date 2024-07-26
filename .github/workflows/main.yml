@@ -26,14 +26,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: ls -la # List files to confirm they exist
-      - uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          password: ${{ secrets.VPS_PASSWORD }}
-          port: 22
-          script: |
-                scp -o StrictHostKeyChecking=no -r /home/runner/work/wisecow/deployment.yml /home/runner/work/wisecow/service.yml ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/sahil/
-                ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "ls -la /home/sahil/"
-                ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "kubectl apply -f /home/sahil/deployment.yml && kubectl apply -f /home/sahil/service.yml"
+      - run: ls -la # List files to confirm they exist in the root
+      - run: |
+          echo "Transferring files..."
+          scp -o StrictHostKeyChecking=no -r deployment.yml service.yml ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/sahil/
+          echo "Files transferred, listing remote directory..."
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "ls -la /home/sahil/" # Verify files are present
+          echo "Applying Kubernetes configurations..."
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "kubectl apply -f /home/sahil/deployment.yml && kubectl apply -f /home/sahil/service.yml"
