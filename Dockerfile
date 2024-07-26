@@ -17,8 +17,10 @@ MAINTAINER Sahil Dahake <sahildahake1999@gmail.com>
 # copy the wisecow script to the bin directory
 COPY wisecow.sh /usr/local/bin/wisecow.sh
 
+# executable permission to the wisecow.sh file
 RUN chmod +x /usr/local/bin/wisecow.sh
 
+# expose the container port
 EXPOSE 4499
 
 ENTRYPOINT ["/usr/local/bin/wisecow.sh"]
