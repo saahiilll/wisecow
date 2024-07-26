@@ -21,16 +21,16 @@ This repository provides instructions for deploying the Wisecow application on a
 ***curl http://localhost:30001***
 
 ### Nginx Configuration for SSL
-*** Fist We Need To Install Nginx Web Server.
-*** Then We Need To Add SSL Certificate And Private Key In Configuration file.
-*** After That We Need To Add Listening Port Number Which Is 30002.
-*** Then We Need To Forward The Requests Comes From Nginx To The localhost:30001 Where The Application Is Hosted.
-*** The Last Step Is That We Need To Add A Record In The DNS Whch Will Map The Public Ip Address Of Server.
-*** When Anyone Requests to `https://rapportsoft.in:30002` will be forwarded to `localhost:30001`.
+- Fist We Need To Install Nginx Web Server.
+- Then We Need To Add SSL Certificate And Private Key In Configuration file.
+- After That We Need To Add Listening Port Number Which Is 30002.
+-  Then We Need To Forward The Requests Comes From Nginx To The localhost:30001 Where The Application Is Hosted.
+-  The Last Step Is That We Need To Add A Record In The DNS Whch Will Map The Public Ip Address Of Server.
+-  When Anyone Requests to `https://rapportsoft.in:30002` will be forwarded to `localhost:30001`.
 
 
 ## Accessing the Application Securely
 
-**Use the following URL to access the Wisecow application securely:
+- Use the following URL to access the Wisecow application securely:
 
-***https://rapportsoft.in:30002
+https://rapportsoft.in:30002
