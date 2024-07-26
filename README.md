@@ -30,8 +30,13 @@ This repository provides instructions for deploying the Wisecow application on a
 -  When Anyone Requests to `https://rapportsoft.in:30002` will be forwarded to `localhost:30001`.
 
 
-## Accessing the Application Securely
+### Accessing the Application Securely
 
 - Use the following URL to access the Wisecow application securely:
 
 https://rapportsoft.in:30002
+
+## Problem Statement 2:
+#### Application Health Checker: Please write a script that can check the uptime of an application and determine if it is functioning correctly or not. The script must accurately assess the application's status by checking HTTP status codes. It should be able to detect if the application is 'up', meaning it is functioning correctly, or 'down', indicating that it is unavailable or not responding.
+- ApplicationHealthChecker.sh
+
