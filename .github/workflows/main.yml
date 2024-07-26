@@ -27,7 +27,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # Transfer files and apply Kubernetes configurations using appleboy/ssh-action
+      # Transfer files to the remote server using scp with password authentication
+      - name: Transfer files
+        run: |
+          echo "Transferring files..."
+          sshpass -p "${{ secrets.VPS_PASSWORD }}" scp -o StrictHostKeyChecking=no deployment.yml service.yml ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/sahil/
+      
+      # Apply Kubernetes configurations using appleboy/ssh-action
       - name: Deploy to server
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -36,9 +42,7 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           port: 22
           script: |
-            echo "Transferring files..."
-            scp -o StrictHostKeyChecking=no -r deployment.yml service.yml ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/sahil/
             echo "Files transferred, listing remote directory..."
-            ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "ls -la /home/sahil/" # Verify files are present
+            ls -la /home/sahil/ # Verify files are present
             echo "Applying Kubernetes configurations..."
-            ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "kubectl apply -f /home/sahil/deployment.yml && kubectl apply -f /home/sahil/service.yml"
+            kubectl apply -f /home/sahil/deployment.yml && kubectl apply -f /home/sahil/service.yml
