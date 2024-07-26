@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-# Prevent interactive prompts during package installat
+# Prevent interactive prompts during package installa
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install required packages
