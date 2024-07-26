@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-# Prevent interactive prompts during package insta
+# Prevent interactive prompts during package inst
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install required packages
