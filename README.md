@@ -3,7 +3,7 @@
 ## Overview
 
 This repository provides instructions for deploying the Wisecow application on a Minikube cluster and configuring it with secure HTTPS access using Nginx as a reverse proxy.
-- Application URL: https://rapportsoft.in:30002
+- Application URL : ***https://rapportsoft.in:30002***
 
 ## Prerequisites
 - Minikube Cluster
