@@ -19,7 +19,7 @@ This repository provides instructions for deploying the Wisecow application on a
 - #### Forwarded the Minikube service to host machine By Following Command:
 ***nohup kubectl port-forward svc/wisecow-service 30001:100 &***
 - #### After Forwarding The Service To The Host Machine Will Able To access The Application From Host Machine Through
-***curl http://localhost:30001***
+  ***curl http://localhost:30001***
 
 ### Nginx Configuration for HTTPS
 - Fist We Need To Install Nginx Web Server.
